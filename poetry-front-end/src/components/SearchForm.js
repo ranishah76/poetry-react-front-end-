@@ -18,17 +18,17 @@ export default class SearchForm extends Component {
 	render() {
 		return (
 			<form className="search-form" onSubmit={this.handleSubmit}>
-				<label className="is-hidden" htmlFor="search"></label>
+				<label htmlFor="search"></label>
 				<input
-          size="90"
+          size="100"
 					type="search"
 					onChange={this.onSearchChange}
 					ref={input => (this.query = input)}
 					name="search"
 					placeholder="Search..."
-				/>
+				/> <br/>
 				<button type="submit" id="submit" className="search-button">
-					<i className="material-icons icn-search">search</i>
+					<i className="material-icons icn-search">Search</i>
 				</button>
 			</form>
 		);

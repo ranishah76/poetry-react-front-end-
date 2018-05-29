@@ -8,6 +8,7 @@
 
 # production
 /build
+/cred.js
 
 # misc
 .DS_Store

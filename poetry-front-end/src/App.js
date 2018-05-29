@@ -50,8 +50,8 @@ export default class App extends Component {
 			<div>
 				<div className="main-header">
 					<div className="inner">
-						<h1 className="main-title">{this.state.query}</h1>
-						<SearchForm onSearch={this.performSearch} />
+				   	<SearchForm onSearch={this.performSearch}/>
+					  	<h1 className="main-title">{this.state.poems[0]}</h1>
 					</div>
 				</div>
 				<div className="main-content">
