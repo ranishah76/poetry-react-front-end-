@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SearchForm from './SearchForm'
-
+import flippingbook from './flippingbook.gif'
+import logo from './green-shakespeare.jpg'
+import './test.css'
 export default class Test extends Component {
 
     state = {
@@ -10,7 +12,8 @@ export default class Test extends Component {
         lines: "",
         title: "",
         linecount: ""
-      }
+      },
+      isNotLoaded: true
     }
 
   componentDidMount() {
@@ -19,7 +22,9 @@ export default class Test extends Component {
 
     fetch('http://localhost:3000/api/v1/poems')
      .then(res => res.json())
-     .then(json => this.setState({
+     .then(json => {
+
+       this.setState({
        poems: json,
        currentPoem: {
          number: randomNumberBetween0and19,
@@ -27,25 +32,29 @@ export default class Test extends Component {
          title: json[randomNumberBetween0and19]["title"],
          linecount: json[randomNumberBetween0and19]["title"]
        }
-     }))
+     }, () => setTimeout(() => this.setState({
+       isNotLoaded: false
+     }),2000))
+
+
+
+   })
    }
 
-
-
-
   render(){
-    console.log(this.state.currentPoem.lines)
-
-    const array = ["Hello", "World", "I am on another line"]
-    return(
+    if(this.state.isNotLoaded) {
+      return <img src={flippingbook} alt="bg" class="bg"/>
+    } return (
     <div>
-      <h1 className="title"> The Best of Poetry </h1>
-      <p className="slogan"> All that glitters is not gold </p>
+
+      <img src={logo} id="logo"/>
       <br/>
       <br/>
       <br/>
+      <div>
       <SearchForm/>
-      <div className="random-poem">
+      </div>
+      <div className="title">
         {this.state.currentPoem.title}
         <br/>
         <br/>
