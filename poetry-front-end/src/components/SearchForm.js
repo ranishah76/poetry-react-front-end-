@@ -1,29 +1,16 @@
 import React, { Component } from 'react';
 
 export default class SearchForm extends Component {
-	state = {
-		searchText: ''
-	};
-
-	onSearchChange = e => {
-		this.setState({ searchText: e.target.value });
-	};
-
-	handleSubmit = e => {
-		e.preventDefault();
-		this.props.onSearch(this.query.value);
-		e.currentTarget.reset();
-	};
 
 	render() {
 		return (
-			<form className="search-form" onSubmit={this.handleSubmit}>
+			<form className="search-form" onSubmit={props.handleSubmit}>
 				<label htmlFor="search"></label>
 				<input
           size="100"
 					type="search"
-					onChange={this.onSearchChange}
-					ref={input => (this.query = input)}
+					onChange={props.onSearch}
+					value={props.query}
 					name="search"
 					placeholder="Search..."
 				/> <br/>

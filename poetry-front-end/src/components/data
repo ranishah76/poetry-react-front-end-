@@ -1,0 +1,14 @@
+onSearchChange = e => {
+   this.setState({ query: e.target.value });
+ };
+
+ handleSubmit = e => {
+   e.preventDefault();
+   const searchTerm = e.target.value
+   const filtered = this.state.poems.map(poem => {
+     return poem["title"].include(searchTerm)
+   })
+   this.setState({
+     filteredPoems: filtered
+   })
+ };
